@@ -1,0 +1,10 @@
+numpy
+scikit-learn==1.3.2
+streamlit
+streamlit-option-menu
+pandas==1.5.3
+#ppscore==1.3.0
+#matplotlib==3.7.1
+seaborn==0.12.2
+#dotenv
+#jupyter

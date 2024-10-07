@@ -1,0 +1,60 @@
+version: '3.9'
+
+services:
+  jupyter:
+    image: pkponkrit124960/car-price-prediction-streamlit-build
+    build:
+      context: .
+      dockerfile: Dockerfile.jupyter
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./notebooks:/app/notebooks
+    environment:
+      - LOGNAME=chaky
+    depends_on:
+      - mlflow
+      - traefik
+
+  mlflow:
+    image: pkponkrit124960/car-price-prediction-streamlit-build
+    build:
+      context: .
+      dockerfile: Dockerfile.mlflow
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./mlflow:/mlflow
+    
+  streamlit:
+    image: pkponkrit124960/car-price-prediction-streamlit-build
+    build:
+      context: .
+      dockerfile: Dockerfile.streamlit
+    ports:
+      - "8020:8020"
+    volumes:
+      - ./streamlit:/root/streamlit
+      # - ./.vscode-server:/root/.vscode-server
+    depends_on:
+      - traefik
+    command: tail -f /dev/null
+    # platform: windows/x86_64
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8020
+  
+  traefik:
+    image: pkponkrit124960/car-price-prediction-streamlit-build
+    ports:
+      - "8080:8080"
+      - "80:80"
+      - "443:443"
+    networks:
+      - traefik
+    volumes:
+      - ./traefik:/traefik
+
+networks:
+  traefik:
+    driver: bridge

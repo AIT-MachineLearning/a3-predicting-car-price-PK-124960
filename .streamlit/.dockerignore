@@ -1,0 +1,10 @@
+__pycache__
+.venv
+mlflow
+notebooks
+streamlit
+traefik
+docker-compose*.yaml
+Dockerfile*
+Pipfile
+Pipfile.lock
