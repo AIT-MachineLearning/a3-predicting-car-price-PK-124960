@@ -15,8 +15,9 @@ def set_page_config():
 import streamlit as st
 import os
 from streamlit_option_menu import option_menu
-from LinearClass import *
-import home, Old_version, New_version
+from LinearClass import Linear, LinearPenalty
+from LinearClassA3 import Ridge, RidgePenalty
+import home, New_version, Newest_version
    
 set_page_config()
 class MultiApp:
@@ -36,7 +37,7 @@ class MultiApp:
         with st.sidebar:        
             app = option_menu(
                 menu_title='PONKRIT st.124960',
-                options=['Home','Old version','New version'],
+                options=['Home','New version','Newest version'],
                 icons=['house-fill','person-circle','person-circle'],
                 menu_icon='chat-text-fill',
                 default_index=1,
@@ -50,10 +51,12 @@ class MultiApp:
 
         if app == "Home":
             home.app()
-        if app == "Old version":
-            Old_version.main()    
+        # if app == "A1 version":
+        #     Old_version.main()    
         if app == "New version":
-            New_version.main()       
+            New_version.main() 
+        if app == "Newest version":
+            Newest_version.main()       
              
     run()            
          

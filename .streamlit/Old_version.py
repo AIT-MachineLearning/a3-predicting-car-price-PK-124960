@@ -1,6 +1,7 @@
 import streamlit as st
 import pickle
 import numpy as np
+import sklearn
 #from annotated_text import annotated_text
 
 filename = 'trained_model.sav'

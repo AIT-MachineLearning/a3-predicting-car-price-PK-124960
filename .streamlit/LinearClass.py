@@ -172,6 +172,7 @@ class Linear(LinearRegression):
         # Access the method from the parent class
         return self._coef()
 
+
 if(__name__ == "__main__"):
     import pickle
     from LinearClass import *
