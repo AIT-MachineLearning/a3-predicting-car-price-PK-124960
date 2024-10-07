@@ -69,3 +69,4 @@ jobs:
             tag=${{ github.ref_name }} docker compose -f st124960/docker-compose.yaml up -d
           
           passphrase: ${{ secrets.KEY_PASSPHRASE }}
+          debug: true 
