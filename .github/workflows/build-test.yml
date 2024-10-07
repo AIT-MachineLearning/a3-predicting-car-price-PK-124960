@@ -19,10 +19,10 @@ jobs:
     # Tasks, specify in list.
     steps:
       # https://github.com/actions/checkout: will clone Git into the image
-      - uses: actions/checkout@v4   #library that's why is "uese"
-      - run: cd .streamlit
+      - uses: actions/checkout@v4   #library that's why is "uses"
       - name: Build the Docker image
         run: docker compose build   # "run" is used as command line
+        working-directory: ./.streamlit
   #     # - name: Compose up
   #       run: docker compose up -d
   #     # Execute pytest
@@ -50,21 +50,21 @@ jobs:
   #         file: .Dockerfile
   #         push: true
   #         tags: ${{ steps.meta.outputs.tags }}
-  # # deploy:
-  # #   environment: Production
-  # #   needs: build-test
-  # #   runs-on: ubuntu-latest
-  # #   steps:
-  # #     - name: SSH Remote Commands
-  # #       uses: appleboy/ssh-action@v1.0.0
-  # #       with:
-  # #         host: ${{ vars.HOST }}
-  # #         username: ${{ secrets.USERNAME }}
-  # #         key: ${{ secrets.KEY }}
-  # #         proxy_host: ${{ vars.PROXY_HOST }}
-  # #         proxy_username: ${{ secrets.USERNAME }}
-  # #         proxy_key: ${{ secrets.KEY }}
-  # #         script: |
-  # #           tag=${{ github.ref_name }} docker compose -f st121413/docker-compose.yaml down
-  # #           tag=${{ github.ref_name }} docker compose -f st121413/docker-compose.yaml up -d
+  # deploy:
+  #   environment: Production
+  #   needs: build-test
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: SSH Remote Commands
+  #       uses: appleboy/ssh-action@v1.0.0
+  #       with:
+  #         host: ${{ vars.HOST }}
+  #         username: ${{ secrets.USERNAME }}
+  #         key: ${{ secrets.KEY }}
+  #         proxy_host: ${{ vars.PROXY_HOST }}
+  #         proxy_username: ${{ secrets.USERNAME }}
+  #         proxy_key: ${{ secrets.KEY }}
+  #         script: |
+  #           tag=${{ github.ref_name }} docker compose -f st121413/docker-compose.yaml down
+  #           tag=${{ github.ref_name }} docker compose -f st121413/docker-compose.yaml up -d
   
