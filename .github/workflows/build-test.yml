@@ -61,12 +61,14 @@ jobs:
           host: ${{ vars.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
+          passphrase: ${{ secrets.KEY_PASSPHRASE }}
           proxy_host: ${{ vars.PROXY_HOST }}
           proxy_username: ${{ secrets.USERNAME }}
-          proxy_password: ${{ secrets.KEY_PASSPHRASE }}
+          proxy_key: ${{ secrets.KEY }}
+          proxy_passphrase: ${{ secrets.KEY_PASSPHRASE }}
           script: |
             tag=${{ github.ref_name }} docker compose -f st124960/docker-compose.yaml down
             tag=${{ github.ref_name }} docker compose -f st124960/docker-compose.yaml up -d
           
-          passphrase: ${{ secrets.KEY_PASSPHRASE }}
-          debug: true 
+          
+          # debug: true 
