@@ -36,7 +36,7 @@ class MultiApp:
         # app = st.sidebar(
         with st.sidebar:        
             app = option_menu(
-                menu_title='PONKRIT st.124960',
+                menu_title='PONKRIT st.124960 v4.0.19',
                 options=['Home','New version','Newest version'],
                 icons=['house-fill','person-circle','person-circle'],
                 menu_icon='chat-text-fill',
